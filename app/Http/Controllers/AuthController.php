@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\AuthUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class AuthController extends Controller
 {
@@ -14,14 +18,30 @@ class AuthController extends Controller
         return User::create($request->all());
     }
 
-    public function login(LoginUserRequest $request)
+    public function login(AuthUserRequest $request):JsonResponse
     {
-        if (!Auth::attempt()) {
+        // Данные автоматически придут из body
+        $credentials = $request->only('email', 'password');
+
+        if (!Auth::attempt($credentials)) {
+            return response()->json([
+                'message' => 'The provided credentials do not match our records.',
+            ], 401);
+        }
+
+        $user = Auth::user();
+
+        return response()->json([
+            'user' => $user,
+            'message' => 'Login successful'
+        ]);
+        /*$validated = $request->validated();
+        if (!Auth::attempt($validated)) {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');
         }
         $request->session()->regenerate();
-        return redirect()->intended('dashboard');
+        return response()->json();*/
     }
 }
