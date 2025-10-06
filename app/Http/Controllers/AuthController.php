@@ -18,30 +18,16 @@ class AuthController extends Controller
         return User::create($request->all());
     }
 
-    public function login(AuthUserRequest $request):JsonResponse
+    public function login(AuthUserRequest $request)
     {
-        // Данные автоматически придут из body
-        $credentials = $request->only('email', 'password');
-
-        if (!Auth::attempt($credentials)) {
-            return response()->json([
-                'message' => 'The provided credentials do not match our records.',
-            ], 401);
-        }
-
-        $user = Auth::user();
-
-        return response()->json([
-            'user' => $user,
-            'message' => 'Login successful'
-        ]);
-        /*$validated = $request->validated();
+        $validated = $request->validated();
         if (!Auth::attempt($validated)) {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');
         }
         $request->session()->regenerate();
-        return response()->json();*/
+        /*return "Успешный вход! Данные: " . print_r($request->all(), true);*/
+        return response()->json($request);
     }
 }
