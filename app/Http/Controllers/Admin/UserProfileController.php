@@ -45,7 +45,7 @@ class UserProfileController extends Controller
     public function recoverUserProfile(int $userId): RedirectResponse
     {
         $user = User::with('user_statuses')->findOrFail($userId);
-        $status = $user->user_statuses()->byUserId()->first();
+        $status = $user->user_statuses()->byUserId($userId)->first();
         $status->status_id = 1;
         $status->save();
         return redirect()->route('admin.user.profile', ['user' => $userId]);
@@ -54,7 +54,7 @@ class UserProfileController extends Controller
     public function destroyUserProfile(int $userId): RedirectResponse
     {
         $user = User::query()->findOrFail($userId);
-        $status = $user->user_statuses()->byUserId()->first();
+        $status = $user->user_statuses()->byUserId($userId)->first();
         $status->status_id = 0;
         $status->save();
         return redirect()->route('admin.users.list');

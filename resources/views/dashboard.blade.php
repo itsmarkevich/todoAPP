@@ -177,7 +177,8 @@
             @endif
         </div>
         <form class="search-form" method="GET" action="{{ route('dashboard') }}">
-            <input type="text" name="search" class="search-input" placeholder="Search by name..." value="{{ $search ?? '' }}">
+            <input type="text" name="search" class="search-input" placeholder="Search by name..."
+                   value="{{ $search ?? '' }}">
             <button type="submit" class="create-btn" style="margin-left: 8px;">Search</button>
         </form>
     </div>
@@ -201,7 +202,8 @@
                         <form method="POST" action="{{ route('tasks.destroy', $task->slug) }}" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="delete-btn" onclick="return confirm('Delete task?')">Delete</button>
+                            <button type="submit" class="delete-btn" onclick="return confirm('Delete task?')">Delete
+                            </button>
                         </form>
                     </div>
                 </div>

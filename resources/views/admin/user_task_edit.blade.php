@@ -8,6 +8,7 @@
             font-family: Arial, sans-serif;
             position: relative;
         }
+
         .show-task-container {
             max-width: 500px;
             margin: 60px auto;
@@ -17,15 +18,18 @@
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
             box-sizing: border-box;
         }
+
         h2 {
             text-align: center;
             margin-bottom: 28px;
         }
+
         .field-label {
             font-weight: 500;
             margin-bottom: 6px;
             display: block;
         }
+
         .field-value {
             padding: 0;
             border: 1px solid #ccc;
@@ -36,6 +40,7 @@
             min-height: 38px;
             word-break: break-word;
         }
+
         .field-value input[type="text"],
         .field-value input[type="date"],
         .field-value textarea {
@@ -49,28 +54,35 @@
             outline: none;
             font-family: inherit;
         }
+
         .field-value[style], .field-value textarea {
             min-height: 110px !important;
         }
+
         .form-row {
             display: flex;
             gap: 16px;
         }
+
         .form-row > div {
             flex: 1;
         }
+
         .form-row:not(:first-child) {
             margin-top: 18px;
         }
+
         .action-btns {
             gap: 16px;
             display: flex;
             margin-top: 24px;
             width: 100%;
         }
+
         .action-btns > * {
             flex: 1;
         }
+
         .edit-btn,
         .delete-btn {
             display: flex;
@@ -87,20 +99,25 @@
             transition: background 0.2s;
             box-sizing: border-box;
         }
+
         .edit-btn {
             background: #28a745;
             color: #fff;
         }
+
         .edit-btn:hover {
             background: #218838;
         }
+
         .delete-btn {
             background: #dc3545;
             color: #fff;
         }
+
         .delete-btn:hover {
             background: #b52a37;
         }
+
         #cancel-btn {
             position: absolute;
             left: 0;
@@ -118,9 +135,11 @@
             text-align: center;
             line-height: 36px;
         }
+
         #cancel-btn:hover {
             background: #495057;
         }
+
         .action-btns > button.action-btn,
         .action-btns > form > button.action-btn {
             width: 100%;
@@ -139,6 +158,7 @@
             transition: background 0.2s;
             box-sizing: border-box;
         }
+
         .action-btns > form {
             width: 100%;
             display: flex;
@@ -146,9 +166,11 @@
             padding: 0;
             margin: 0;
         }
+
         .action-btns > button.edit-btn {
             max-width: calc(50% - 8px);
         }
+
     </style>
 </head>
 <body>
@@ -156,7 +178,9 @@
     Cancel
 </a>
 <div class="show-task-container">
-    <form id="edit-form" method="POST" action="{{ route('admin.task.update', ['user' => $user->id, 'slug' => $task->slug]) }}" style="margin:0; padding:0;">
+    <form id="edit-form" method="POST"
+          action="{{ route('admin.task.update', ['user' => $user->id, 'slug' => $task->slug]) }}"
+          style="margin:0; padding:0;">
         @csrf
         @method('PATCH')
         <h2>{{ $user->name }}'s task edit</h2>
@@ -169,7 +193,8 @@
         <div>
             <label class="field-label">Description</label>
             <div class="field-value" style="min-height:70px;">
-                <textarea id="description" name="description" required>{{ old('description', $task->description) }}</textarea>
+                <textarea id="description" name="description"
+                          required>{{ old('description', $task->description) }}</textarea>
             </div>
         </div>
         <div class="form-row">
@@ -191,7 +216,8 @@
     </form>
     <div class="action-btns">
         <button type="submit" class="edit-btn action-btn" form="edit-form">Save</button>
-        <form method="POST" action="{{ route('admin.task.destroy', ['user' => $user->id, 'slug' => $task->slug]) }}" style="margin:0; padding:0;">
+        <form method="POST" action="{{ route('admin.task.destroy', ['user' => $user->id, 'slug' => $task->slug]) }}"
+              style="margin:0; padding:0;">
             @csrf
             @method('DELETE')
             <button type="submit" class="delete-btn action-btn" onclick="return confirm('Delete task?')">Delete</button>

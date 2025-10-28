@@ -10,15 +10,17 @@
             margin: 0;
             padding: 0;
         }
+
         .welcome-container {
             max-width: 600px;
             margin: 100px auto 0;
             padding: 40px 30px 30px 30px;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
             position: relative;
         }
+
         .auth-buttons {
             position: absolute;
             top: 30px;
@@ -26,6 +28,7 @@
             display: flex;
             gap: 12px;
         }
+
         .auth-btn {
             background: #007bff;
             color: #fff;
@@ -37,9 +40,11 @@
             font-size: 1em;
             transition: background 0.2s;
         }
+
         .auth-btn:hover {
             background: #0056b3;
         }
+
         .welcome-title {
             text-align: center;
             font-size: 2em;
@@ -47,6 +52,7 @@
             margin-bottom: 0;
             color: #222;
         }
+
     </style>
 </head>
 <body>

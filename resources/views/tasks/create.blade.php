@@ -7,27 +7,32 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         .create-task-container {
             max-width: 500px;
             margin: 60px auto;
             padding: 30px 30px 24px 30px;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
         }
+
         h2 {
             text-align: center;
             margin-bottom: 28px;
         }
+
         form {
             display: flex;
             flex-direction: column;
             gap: 18px;
         }
+
         label {
             font-weight: 500;
             margin-bottom: 6px;
         }
+
         input[type="text"],
         textarea,
         input[type="date"] {
@@ -38,17 +43,21 @@
             width: 100%;
             box-sizing: border-box;
         }
+
         textarea {
             min-height: 70px;
             resize: vertical;
         }
+
         .form-row {
             display: flex;
             gap: 16px;
         }
+
         .form-row > div {
             flex: 1;
         }
+
         .submit-btn {
             background: #28a745;
             color: #fff;
@@ -59,9 +68,11 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
         .submit-btn:hover {
             background: #218838;
         }
+
     </style>
 </head>
 <body>

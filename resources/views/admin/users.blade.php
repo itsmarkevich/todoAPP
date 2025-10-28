@@ -21,7 +21,7 @@
 
         .profile-btn {
             position: absolute;
-            top: 20 px;
+            top: 20px;
             right: 20px;
             background: #007bff;
             color: white;

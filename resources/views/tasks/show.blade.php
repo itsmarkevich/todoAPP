@@ -7,24 +7,28 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         .show-task-container {
             max-width: 500px;
             margin: 60px auto;
             padding: 30px 30px 24px 30px;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
             box-sizing: border-box;
         }
+
         h2 {
             text-align: center;
             margin-bottom: 28px;
         }
+
         .field-label {
             font-weight: 500;
             margin-bottom: 6px;
             display: block;
         }
+
         .field-value {
             padding: 8px 12px;
             border: 1px solid #ccc;
@@ -35,31 +39,39 @@
             min-height: 38px;
             word-break: break-word;
         }
+
         .form-row {
             display: flex;
             gap: 16px;
         }
+
         .form-row > div {
             flex: 1;
         }
+
         .form-row:not(:first-child) {
             margin-top: 18px;
         }
+
         .action-btns {
             gap: 16px;
             display: flex;
         }
+
         .action-btns > * {
             flex: 1;
         }
+
         .action-btns form {
             width: 100%;
             display: flex;
             flex: 1;
         }
+
         .action-btns form .delete-btn {
             width: 100%;
         }
+
         .edit-btn,
         .delete-btn {
             display: flex;
@@ -76,17 +88,21 @@
             transition: background 0.2s;
             box-sizing: border-box;
         }
+
         .edit-btn {
             background: #ffc107;
             color: #222;
         }
+
         .edit-btn:hover {
             background: #e0a800;
         }
+
         .delete-btn {
             background: #dc3545;
             color: #fff;
         }
+
         .delete-btn:hover {
             background: #b52a37;
         }
@@ -108,12 +124,15 @@
             text-align: center;
             line-height: 36px;
         }
+
         #back-to-dashboard-btn:hover {
             background: #0056b3;
         }
+
         body {
             position: relative;
         }
+
     </style>
 </head>
 <body>

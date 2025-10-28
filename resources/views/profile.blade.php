@@ -62,6 +62,7 @@
             cursor: pointer;
             margin: 20px auto 0;
             display: block;
+            font-family: Arial, sans-serif;
         }
 
         .logout-btn:hover {
@@ -80,7 +81,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative; /* Добавьте это */
+            position: relative;
         }
 
         .profile-header {
@@ -90,7 +91,7 @@
             justify-content: center;
             width: 100%;
             margin-bottom: 30px;
-            min-height: 48px; /* высота кнопки + отступы */
+            min-height: 48px;
         }
 
         #back-to-dashboard-btn {
@@ -105,6 +106,17 @@
             margin: 0;
             text-align: center;
         }
+
+        button, .logout-btn {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            font-family: Arial, sans-serif !important;
+            font-weight: 400 !important;
+            font-size: inherit !important;
+            line-height: normal !important;
+        }
+
     </style>
 </head>
 <body>

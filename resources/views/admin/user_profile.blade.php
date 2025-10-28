@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Профиль пользователя</title>
+    <title>{{ $user->name }}'s profile</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -91,6 +91,39 @@
             text-align: center;
             margin-bottom: 30px;
         }
+
+        button, button.edit-btn, button.logout-btn {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            font-family: Arial, sans-serif !important;
+            font-weight: 400 !important;
+            font-size: inherit !important;
+            line-height: normal !important;
+        }
+
+        /* css */
+        .destroy-btn {
+            background: #dc3545 !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0;
+            display: block;
+            min-width: 160px;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: normal;
+            transition: background 0.2s;
+        }
+
+        .destroy-btn:hover {
+            background: #b52a37 !important;
+        }
+
     </style>
 </head>
 <body>
@@ -191,14 +224,16 @@
                 </button>
             </form>
         @endif
-        <form method="POST" action="{{ route('admin.user.profile.destroy', ['user' => $user->id]) }}">
-            @csrf
-            @method('DELETE')
-            <button class="logout-btn" style="background:#dc3545; width:auto; margin:0;" type="submit"
-                    onclick="return confirm('Are you sure you want to delete user account?')">
-                Destroy account
-            </button>
-        </form>
+        @if((int) optional($user->user_statuses)->status_id !== 0)
+            <form method="POST" action="{{ route('admin.user.profile.destroy', ['user' => $user->id]) }}">
+                @csrf
+                @method('DELETE')
+                <button class="destroy-btn" type="submit"
+                        onclick="return confirm('Are you sure you want to delete user account?')">
+                    Destroy account
+                </button>
+            </form>
+        @endif
     </div>
 </div>
 </body>

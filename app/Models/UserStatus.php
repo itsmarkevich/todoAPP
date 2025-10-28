@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Models\Traits\HasUserScopes;
+use App\Models\Traits\HasUserStatusScopes;
 use Illuminate\Database\Eloquent\Model;
 
 class UserStatus extends Model
 {
-    use HasUserScopes;
+    use HasUserStatusScopes;
 
     protected $fillable = [
         'status_id',
