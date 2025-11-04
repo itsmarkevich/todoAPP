@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $user->name = $request->input('name');
         $user->save();
-        return redirect()->route('profile')->with('success', 'Name changed.');
+        return to_route('profile')->with('success', 'Name changed.');
     }
 
     public function updateProfileUserEmail(UpdateUserEmailRequest $request): RedirectResponse
@@ -31,7 +31,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $user->email = $request->input('email');
         $user->save();
-        return redirect()->route('profile')->with('success', 'Email changed.');
+        return to_route('profile')->with('success', 'Email changed.');
     }
 
     public function updateProfileUserPassword(UpdateUserPasswordRequest $request): RedirectResponse
@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $user->password = $request->input('password');
         $user->save();
-        return redirect()->route('profile')->with('success', 'Password changed.');
+        return to_route('profile')->with('success', 'Password changed.');
     }
 
     public function destroyProfileUser(): RedirectResponse
@@ -49,6 +49,6 @@ class ProfileController extends Controller
         $status->status_id = 0;
         $status->save();
         Auth::logout();
-        return redirect()->route('register');
+        return to_route('register');
     }
 }

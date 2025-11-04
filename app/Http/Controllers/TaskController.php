@@ -18,7 +18,7 @@ class TaskController extends Controller
     {
         $query = auth()->user()->tasks();
         if ($search = $request->input('search')) {
-            $query->findtask($search);
+            $query->findTask($search);
         }
         $tasks = $query->get();
         return view('dashboard', compact('tasks', 'search'));
@@ -40,7 +40,7 @@ class TaskController extends Controller
         $data = $request->all();
         $data['user_id'] = auth()->id();
         Task::create($data);
-        return redirect()->route('dashboard');
+        return to_route('dashboard');
     }
 
     /**
@@ -68,7 +68,7 @@ class TaskController extends Controller
     {
         $task = auth()->user()->tasks()->taskBySlug($slug)->firstOrFail();
         $task->update($request->all());
-        return redirect()->route('tasks.show', $task->slug);
+        return to_route('tasks.show', $task->slug);
     }
 
     /**
@@ -78,6 +78,6 @@ class TaskController extends Controller
     {
         $task = auth()->user()->tasks()->taskBySlug($slug)->firstOrFail();
         $task->delete();
-        return redirect()->route('dashboard');
+        return to_route('dashboard');
     }
 }

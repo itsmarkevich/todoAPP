@@ -23,7 +23,7 @@ class UserProfileController extends Controller
         $user = User::query()->findOrFail($userId);
         $user->name = $request->input('name');
         $user->save();
-        return redirect()->route('admin.user.profile', ['user' => $userId])->with('success', 'Name changed.');
+        return to_route('admin.user.profile', ['user' => $userId])->with('success', 'Name changed.');
     }
 
     public function updateUserProfileEmail(int $userId, UpdateUserEmailRequest $request): RedirectResponse
@@ -31,7 +31,7 @@ class UserProfileController extends Controller
         $user = User::query()->findOrFail($userId);
         $user->email = $request->input('email');
         $user->save();
-        return redirect()->route('admin.user.profile', ['user' => $userId])->with('success', 'Email changed.');
+        return to_route('admin.user.profile', ['user' => $userId])->with('success', 'Email changed.');
     }
 
     public function updateUserProfilePassword(int $userId, UpdateUserPasswordRequest $request): RedirectResponse
@@ -39,7 +39,7 @@ class UserProfileController extends Controller
         $user = User::query()->findOrFail($userId);
         $user->password = $request->input('password');
         $user->save();
-        return redirect()->route('admin.user.profile', ['user' => $userId])->with('success', 'Password changed.');
+        return to_route('admin.user.profile', ['user' => $userId])->with('success', 'Password changed.');
     }
 
     public function recoverUserProfile(int $userId): RedirectResponse
@@ -48,7 +48,7 @@ class UserProfileController extends Controller
         $status = $user->user_statuses()->byUserId($userId)->first();
         $status->status_id = 1;
         $status->save();
-        return redirect()->route('admin.user.profile', ['user' => $userId]);
+        return to_route('admin.user.profile', ['user' => $userId]);
     }
 
     public function destroyUserProfile(int $userId): RedirectResponse
@@ -57,6 +57,6 @@ class UserProfileController extends Controller
         $status = $user->user_statuses()->byUserId($userId)->first();
         $status->status_id = 0;
         $status->save();
-        return redirect()->route('admin.users.list');
+        return to_route('admin.users.list');
     }
 }

@@ -23,7 +23,7 @@ class AuthController extends Controller
         $user->user_statuses()->create([
             'status_id' => 1
         ]);
-        return redirect()->route('login');
+        return to_route('login');
     }
     public function showLoginForm(): View
     {
@@ -56,6 +56,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return to_route('login');
     }
 }

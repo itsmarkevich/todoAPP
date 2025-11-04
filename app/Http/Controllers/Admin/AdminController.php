@@ -55,7 +55,7 @@ class AdminController extends Controller
         $data = $request->all();
         $data['user_id'] = $userId;
         Task::create($data);
-        return redirect()->route('admin.user.tasksList', ['user' => $userId]);
+        return to_route('admin.user.tasksList', ['user' => $userId]);
     }
 
     /**
@@ -91,7 +91,7 @@ class AdminController extends Controller
             ->byUserAndSlug($userId, $slug)
             ->firstOrFail();
         $task->update($request->validated());
-        return redirect()->route('admin.user.tasksList', ['user' => $userId]);
+        return to_route('admin.user.tasksList', ['user' => $userId]);
     }
 
     /**
@@ -104,6 +104,6 @@ class AdminController extends Controller
             ->firstOrFail();
         $user = User::query()->findOrFail($userId);
         $task->delete();
-        return redirect()->route('admin.user.tasksList', ['user' => $userId]);
+        return to_route('admin.user.tasksList', ['user' => $userId]);
     }
 }
