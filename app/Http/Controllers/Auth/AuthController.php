@@ -9,26 +9,23 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showRegisterForm(): View
-    {
-        return view('auth.register');
-    }
     public function register(StoreUserRequest $request): RedirectResponse
     {
-        $user = User::create($request->all());
-        $user->user_statuses()->create([
-            'status_id' => 1
-        ]);
+        $data = $request->validated();
+        DB::transaction(function () use ($data) {
+            $user = User::create($data);
+            $user->user_statuses()->create([
+                'status_id' => 1
+            ]);
+        });
         return to_route('login');
     }
-    public function showLoginForm(): View
-    {
-        return view('auth.login');
-    }
+
     public function login(LoginUserRequest $request): RedirectResponse
     {
         $validated = $request->validated();

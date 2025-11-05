@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\AuthViewController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::post('/email/verification-notification', function () {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('form.register');
+Route::get('/register', [AuthViewController::class, 'showRegisterForm'])->name('form.register');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('form.login');
+Route::get('/login', [AuthViewController::class, 'showLoginForm'])->name('form.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
